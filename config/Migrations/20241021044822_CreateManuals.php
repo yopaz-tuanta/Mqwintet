@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Migrations\AbstractMigration;
@@ -17,19 +18,20 @@ class CreateManuals extends AbstractMigration
         $table = $this->table('manuals');
         $table
             ->addColumn('title', 'string', [
-                'default' => null,
+                'limit' => 255,
                 'null' => false,
             ])
             ->addColumn('desc', 'text', [
                 'default' => null,
+                'null' => true,
             ])
-            ->addColumn('created_at', 'timestamp',[
-                'default' => 'CURRENT_TIMESTAMP',
-                'null' => false,
+            ->addColumn('created', 'timestamp', [
+                'default' => null,
+                'null' => true,
             ])
-            ->addColumn('updated_at', 'timestamp',[
-                'default' => 'CURRENT_TIMESTAMP',
-                'null' => false,
+            ->addColumn('updated', 'timestamp', [
+                'default' => null,
+                'null' => true,
             ])
             ->create();
     }

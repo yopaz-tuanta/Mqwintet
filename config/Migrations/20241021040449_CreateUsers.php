@@ -22,17 +22,17 @@ class CreateUsers extends AbstractMigration
                 'null' => false,
             ])
             ->addIndex('email', ['unique' => true])
+
             ->addColumn('first_name', 'string',[
                 'limit' => 255,
                 'null' => false,
             ])
             ->addColumn('last_name', 'string',[
-                'default' => null,
                 'limit' => 255,
                 'null' => false,
             ])
             ->addColumn('password', 'string',[
-                'default' => null,
+                'limit' => 255,
                 'null' => false,
             ])
             ->addColumn('role', 'enum',[
@@ -40,15 +40,16 @@ class CreateUsers extends AbstractMigration
                 'default' => UserRoleEnum::USER,
                 'null' => false,
             ])
-            ->addColumn('created_at', 'timestamp',[
-                'default' => 'CURRENT_TIMESTAMP',
-                'null' => false,
+            ->addColumn('created', 'timestamp',[
+                'default' => null,
+                'null' => true,
+
             ])
-            ->addColumn('updated_at', 'timestamp',[
-                'default' => 'CURRENT_TIMESTAMP',
-                'null' => false,
+            ->addColumn('updated', 'timestamp',[
+                'default' => null,
+                'null' => true,
             ])
-            ->addColumn('deleted_at', 'timestamp',[
+            ->addColumn('deleted', 'timestamp',[
                 'default' => null,
                 'null' => true,
             ])

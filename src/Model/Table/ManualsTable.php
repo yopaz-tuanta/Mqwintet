@@ -42,7 +42,7 @@ class ManualsTable extends Table
         $this->setTable('manuals');
         $this->setDisplayField('title');
         $this->setPrimaryKey('id');
-
+        $this->addBehavior('Timestamp');
         $this->hasMany('Videos', [
             'foreignKey' => 'manual_id',
         ]);

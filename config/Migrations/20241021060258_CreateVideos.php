@@ -18,39 +18,38 @@ class CreateVideos extends AbstractMigration
         $table = $this->table('videos');
         $table
             ->addColumn('manual_id', 'integer', [
-                'default' => null,
                 'null' => false,
             ])
             ->addColumn('title', 'string', [
-                'default' => null,
+                'limit' => 255,
                 'null' => false,
             ])
             ->addColumn('desc', 'text', [
                 'default' => null,
+                'null' => true,
             ])
-            ->addColumn('thumbnail_url', 'string', [
-                'default' => null,
+            ->addColumn('thumbnail_url', 'text', [
+                'null' => false,
             ])
-            ->addColumn('video_url', 'string', [
-                'default' => null,
+            ->addColumn('video_url', 'text', [
+                'null' => false,
             ])
             ->addColumn('sort_order', 'integer', [
+                'null' => false,
+            ])
+            ->addColumn('created', 'timestamp', [
                 'default' => null,
-                'null' => false,
+                'null' => true,
             ])
-            ->addColumn('created_at', 'timestamp', [
-                'default' => 'CURRENT_TIMESTAMP',
-                'null' => false,
+            ->addColumn('updated', 'timestamp', [
+                'default' => null,
+                'null' => true,
             ])
-            ->addColumn('updated_at', 'timestamp', [
-                'default' => 'CURRENT_TIMESTAMP',
-                'null' => false,
+            ->addColumn('released', 'timestamp', [
+                'default' => null,
+                'null' => true,
             ])
-            ->addColumn('released_at', 'timestamp', [
-                'default' => 'CURRENT_TIMESTAMP',
-                'null' => false,
-            ])
-            ->addColumn('deleted_at', 'timestamp', [
+            ->addColumn('deleted', 'timestamp', [
                 'default' => null,
                 'null' => true,
             ])

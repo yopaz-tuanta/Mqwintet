@@ -18,25 +18,25 @@ class CreateNews extends AbstractMigration
         $table = $this->table('news');
         $table
             ->addColumn('title', 'string', [
-                'default' => null,
+                'limit' => 255,
                 'null' => false,
             ])
             ->addColumn('content', 'text', [
                 'default' => null,
             ])
-            ->addColumn('created_at', 'timestamp', [
-                'default' => 'CURRENT_TIMESTAMP',
-                'null' => false,
+            ->addColumn('created', 'timestamp', [
+                'default' => null,
+                'null' => true,
             ])
-            ->addColumn('updated_at', 'timestamp', [
-                'default' => 'CURRENT_TIMESTAMP',
-                'null' => false,
+            ->addColumn('updated', 'timestamp', [
+                'default' => null,
+                'null' => true,
             ])
-            ->addColumn('released_at', 'timestamp', [
-                'default' => 'CURRENT_TIMESTAMP',
-                'null' => false,
+            ->addColumn('released', 'timestamp', [
+                'default' => null,
+                'null' => true,
             ])
-            ->addColumn('deleted_at', 'timestamp', [
+            ->addColumn('deleted', 'timestamp', [
                 'default' => null,
                 'null' => true,
             ])

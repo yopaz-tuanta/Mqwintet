@@ -42,6 +42,7 @@ class VideosTable extends Table
         $this->setTable('videos');
         $this->setDisplayField('title');
         $this->setPrimaryKey('id');
+        $this->addBehavior('Timestamp');
 
         $this->belongsTo('Manuals', [
             'foreignKey' => 'manual_id',

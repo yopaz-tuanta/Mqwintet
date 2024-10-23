@@ -40,6 +40,7 @@ class UsersTable extends Table
         $this->setTable('users');
         $this->setDisplayField('email');
         $this->setPrimaryKey('id');
+        $this->addBehavior('Timestamp');
     }
 
     /**
