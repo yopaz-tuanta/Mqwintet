@@ -36,6 +36,24 @@ class UsersSeed extends AbstractSeed
                 'last_name' => 'Anh Tu',
                 'password' => '123456',
             ],
+            [
+                'email' => 'tuchibi1512@gmail.com',
+                'first_name' => 'Truong',
+                'last_name' => 'Anh Tu1',
+                'password' => '123456',
+            ],
+            [
+                'email' => 'tuchibi1513@gmail.com',
+                'first_name' => 'Truong',
+                'last_name' => 'Anh Tu3',
+                'password' => '123456',
+            ],
+            [
+                'email' => 'tuchibi1514@gmail.com',
+                'first_name' => 'Truong',
+                'last_name' => 'Anh Tu4',
+                'password' => '123456',
+            ],
         ];
 
         $table = $this->table('users');
