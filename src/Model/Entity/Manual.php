@@ -30,8 +30,6 @@ class Manual extends Entity
     protected array $_accessible = [
         'title' => true,
         'description' => true,
-        'created' => true,
-        'modified' => true,
         'videos' => true,
     ];
 }

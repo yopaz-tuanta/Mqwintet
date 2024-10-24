@@ -54,9 +54,6 @@
                             <th><?= __('Thumbnail Url') ?></th>
                             <th><?= __('Video Url') ?></th>
                             <th><?= __('Sort Order') ?></th>
-                            <th><?= __('Created') ?></th>
-                            <th><?= __('Modified') ?></th>
-                            <th><?= __('Released') ?></th>
                             <th><?= __('Deleted') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
@@ -64,14 +61,11 @@
                         <tr>
                             <td><?= h($video->id) ?></td>
                             <td><?= h($video->manual_id) ?></td>
-                            <td><?= h($video->title) ?></td>
+                            <td><?= $this->Html->link($video->title, ['controller' => 'Videos', 'action' => 'view', $video->id]) ?></td>
                             <td><?= h($video->description) ?></td>
                             <td><?= h($video->thumbnail_url) ?></td>
                             <td><?= h($video->video_url) ?></td>
                             <td><?= h($video->sort_order) ?></td>
-                            <td><?= h($video->created) ?></td>
-                            <td><?= h($video->modified) ?></td>
-                            <td><?= h($video->released) ?></td>
                             <td><?= h($video->deleted) ?></td>
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['controller' => 'Videos', 'action' => 'view', $video->id]) ?>

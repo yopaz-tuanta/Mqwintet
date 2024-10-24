@@ -34,16 +34,12 @@ class Video extends Entity
      * @var array<string, bool>
      */
     protected array $_accessible = [
-        'manual_id' => true,
         'title' => true,
         'description' => true,
         'thumbnail_url' => true,
         'video_url' => true,
         'sort_order' => true,
-        'created' => true,
-        'modified' => true,
         'released' => true,
         'deleted' => true,
-        'manual' => true,
     ];
 }
