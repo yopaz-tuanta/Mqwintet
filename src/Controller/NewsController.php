@@ -18,8 +18,10 @@ class NewsController extends AppController
     public function index()
     {
         $query = $this->News->find();
+        // $news = $this->paginate($query, [
+        //     'limit' => 1,
+        // ]);
         $news = $this->paginate($query);
-
         $this->set(compact('news'));
     }
 

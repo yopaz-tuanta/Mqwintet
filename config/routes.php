@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Routes configuration.
  *
@@ -29,6 +30,7 @@ use Cake\Routing\RouteBuilder;
  * So you can use `$this` to reference the application class instance
  * if required.
  */
+
 return function (RouteBuilder $routes): void {
     /*
      * The default class to use for all routes
@@ -56,6 +58,27 @@ return function (RouteBuilder $routes): void {
          * to use (in this case, templates/Pages/home.php)...
          */
         $builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+
+        $builder->connect('/manual', ['controller' => 'Manuals', 'action' => 'index']);
+        $builder->connect(
+            '/manual/{id}',
+            ['controller' => 'Manuals', 'action' => 'view'],
+        )
+            ->setPatterns(['id' => '\d+'])
+            ->setPass(['id']);
+
+        $builder->connect(
+            '/manual/{manualId}/{videoId}',
+            ['controller' => 'Videos', 'action' => 'view'],
+        )
+            ->setPatterns(['videoId' => '\d+'])
+            ->setPass(['videoId']);
+
+
+        $builder->connect('/news', ['controller' => 'News', 'action' => 'index']);
+        $builder->connect('/news/{id}', ['controller' => 'News', 'action' => 'view'])
+            ->setPatterns(['id' => '\d+'])
+            ->setPass(['id']);;
 
         /*
          * ...and connect the rest of 'Pages' controller's URLs.
