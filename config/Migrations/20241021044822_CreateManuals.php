@@ -29,7 +29,7 @@ class CreateManuals extends AbstractMigration
                 'default' => null,
                 'null' => true,
             ])
-            ->addColumn('updated', 'timestamp', [
+            ->addColumn('modified', 'timestamp', [
                 'default' => null,
                 'null' => true,
             ])

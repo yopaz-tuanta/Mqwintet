@@ -45,7 +45,7 @@ class CreateUsers extends AbstractMigration
                 'null' => true,
 
             ])
-            ->addColumn('updated', 'timestamp',[
+            ->addColumn('modified', 'timestamp',[
                 'default' => null,
                 'null' => true,
             ])
