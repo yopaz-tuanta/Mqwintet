@@ -527,16 +527,16 @@
         },
         {
             "name": "league/container",
-            "version": "4.2.2",
+            "version": "4.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/container.git",
-                "reference": "ff346319ca1ff0e78277dc2311a42107cc1aab88"
+                "reference": "72f9bebe7bd623007782a40f5ec305661ab706d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/container/zipball/ff346319ca1ff0e78277dc2311a42107cc1aab88",
-                "reference": "ff346319ca1ff0e78277dc2311a42107cc1aab88",
+                "url": "https://api.github.com/repos/thephpleague/container/zipball/72f9bebe7bd623007782a40f5ec305661ab706d8",
+                "reference": "72f9bebe7bd623007782a40f5ec305661ab706d8",
                 "shasum": ""
             },
             "require": {
@@ -597,7 +597,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/container/issues",
-                "source": "https://github.com/thephpleague/container/tree/4.2.2"
+                "source": "https://github.com/thephpleague/container/tree/4.2.3"
             },
             "funding": [
                 {
@@ -605,7 +605,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-13T13:12:53+00:00"
+            "time": "2024-10-23T12:06:58+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -2949,16 +2949,16 @@
         },
         {
             "name": "doctrine/sql-formatter",
-            "version": "1.5.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/sql-formatter.git",
-                "reference": "16ca9e39877369d664f06dacde468548298bdc40"
+                "reference": "b784cbde727cf806721451dde40eff4fec3bbe86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/sql-formatter/zipball/16ca9e39877369d664f06dacde468548298bdc40",
-                "reference": "16ca9e39877369d664f06dacde468548298bdc40",
+                "url": "https://api.github.com/repos/doctrine/sql-formatter/zipball/b784cbde727cf806721451dde40eff4fec3bbe86",
+                "reference": "b784cbde727cf806721451dde40eff4fec3bbe86",
                 "shasum": ""
             },
             "require": {
@@ -2999,9 +2999,9 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/sql-formatter/issues",
-                "source": "https://github.com/doctrine/sql-formatter/tree/1.5.0"
+                "source": "https://github.com/doctrine/sql-formatter/tree/1.5.1"
             },
-            "time": "2024-09-11T07:29:40+00:00"
+            "time": "2024-10-21T18:21:57+00:00"
         },
         {
             "name": "jasny/twig-extensions",

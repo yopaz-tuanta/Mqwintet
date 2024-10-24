@@ -53,6 +53,11 @@
         "cs-check": "phpcs --colors -p",
         "cs-fix": "phpcbf --colors -p",
         "stan": "phpstan analyze",
-        "test": "phpunit --colors=always"
+        "test": "phpunit --colors=always",
+        "refresh": [
+            "bin/cake migrations rollback --target=0",
+            "bin/cake migrations migrate",
+            "bin/cake migrations seed"
+        ]
     }
 }
