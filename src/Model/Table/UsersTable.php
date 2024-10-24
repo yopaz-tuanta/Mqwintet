@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Table;
@@ -59,7 +60,7 @@ class UsersTable extends Table
             ->email('email')
             ->requirePresence('email', 'create')
             ->notEmptyString('email')
-            ->add('email', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+            ->add('email', 'unique', ['rule' => 'validateUnique', 'provider' => 'table', 'message' => 'Địa chỉ email đã được sử dụng.']);
 
         $validator
             ->scalar('first_name')
@@ -73,11 +74,19 @@ class UsersTable extends Table
             ->requirePresence('last_name', 'create')
             ->notEmptyString('last_name');
 
+
         $validator
             ->scalar('password')
             ->maxLength('password', 255)
             ->requirePresence('password', 'create')
-            ->notEmptyString('password');
+            ->notEmptyString('password')
+            ->add('password', 'custom', [
+                'rule' => function ($value, $context) {
+                    return preg_match('/\d/', $value) === 1; // Kiểm tra xem có chữ số hay không
+                },
+                'message' => 'Phai co toi thieu 1 so trong mat khau'
+            ]);
+
 
         $validator
             ->scalar('role')
