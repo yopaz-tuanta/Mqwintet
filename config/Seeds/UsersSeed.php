@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Cake\Utility\Hash;
 use Migrations\AbstractSeed;
+use Authentication\PasswordHasher\DefaultPasswordHasher; // Add this line
 
 /**
  * Users seed.
@@ -27,37 +28,46 @@ class UsersSeed extends AbstractSeed
                 'email' => 'tuanchibi1411@gmail.com',
                 'first_name' => 'Truong',
                 'last_name' => 'Anh Tuan',
-                'password' => '123456',
+                'password' => $this->_setPassword('123456'),
                 'role' => 'admin',
             ],
             [
                 'email' => 'tuchibi1511@gmail.com',
                 'first_name' => 'Truong',
                 'last_name' => 'Anh Tu',
-                'password' => '123456',
+                'password' => $this->_setPassword('123456'),
             ],
             [
                 'email' => 'tuchibi1512@gmail.com',
                 'first_name' => 'Truong',
                 'last_name' => 'Anh Tu1',
-                'password' => '123456',
+                'password' => $this->_setPassword('123456'),
             ],
             [
                 'email' => 'tuchibi1513@gmail.com',
                 'first_name' => 'Truong',
                 'last_name' => 'Anh Tu3',
-                'password' => '123456',
+                'password' => $this->_setPassword('123456'),
             ],
             [
                 'email' => 'tuchibi1514@gmail.com',
                 'first_name' => 'Truong',
                 'last_name' => 'Anh Tu4',
-                'password' => '123456',
+                'password' => $this->_setPassword('123456'),
             ],
         ];
 
         $table = $this->table('users');
         
         $table->insert($data)->save();
+    }
+
+    // Add this method
+    protected function _setPassword(string $password) : ?string
+    {
+        if (strlen($password) > 0) {
+            return (new DefaultPasswordHasher())->hash($password);
+        }
+        return null;
     }
 }
