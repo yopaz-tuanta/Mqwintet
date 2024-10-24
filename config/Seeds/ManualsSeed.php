@@ -24,11 +24,11 @@ class ManualsSeed extends AbstractSeed
         $data = [
             [
                 'title' => 'Huong dan sua xe oto',
-                'desc' => 'Mo ta huong dan sua xe oto',
+                'description' => 'Mo ta huong dan sua xe oto',
             ],
             [
                 'title' => 'Huong dan sua xe may',
-                'desc' => 'Mo ta huong dan sua xe may',
+                'description' => 'Mo ta huong dan sua xe may',
             ],
         ];
 

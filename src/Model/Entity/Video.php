@@ -11,7 +11,7 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property int $manual_id
  * @property string $title
- * @property string|null $desc
+ * @property string|null $description
  * @property string $thumbnail_url
  * @property string $video_url
  * @property int $sort_order
@@ -36,10 +36,12 @@ class Video extends Entity
     protected array $_accessible = [
         'manual_id' => true,
         'title' => true,
-        'desc' => true,
+        'description' => true,
         'thumbnail_url' => true,
         'video_url' => true,
         'sort_order' => true,
+        'created' => true,
+        'modified' => true,
         'released' => true,
         'deleted' => true,
         'manual' => true,

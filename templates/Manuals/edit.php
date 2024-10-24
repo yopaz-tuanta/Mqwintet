@@ -23,7 +23,7 @@
                 <legend><?= __('Edit Manual') ?></legend>
                 <?php
                     echo $this->Form->control('title');
-                    echo $this->Form->control('desc');
+                    echo $this->Form->control('description');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

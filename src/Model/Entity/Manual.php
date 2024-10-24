@@ -10,7 +10,7 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $title
- * @property string|null $desc
+ * @property string|null $description
  * @property \Cake\I18n\DateTime|null $created
  * @property \Cake\I18n\DateTime|null $modified
  *
@@ -29,7 +29,9 @@ class Manual extends Entity
      */
     protected array $_accessible = [
         'title' => true,
-        'desc' => true,
+        'description' => true,
+        'created' => true,
+        'modified' => true,
         'videos' => true,
     ];
 }

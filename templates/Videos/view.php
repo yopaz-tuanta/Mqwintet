@@ -52,9 +52,9 @@
                 </tr>
             </table>
             <div class="text">
-                <strong><?= __('Desc') ?></strong>
+                <strong><?= __('Description') ?></strong>
                 <blockquote>
-                    <?= $this->Text->autoParagraph(h($video->desc)); ?>
+                    <?= $this->Text->autoParagraph(h($video->description)); ?>
                 </blockquote>
             </div>
             <div class="text">

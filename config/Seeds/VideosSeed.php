@@ -30,7 +30,7 @@ class VideosSeed extends AbstractSeed
             [
                 'manual_id' => 1,
                 'title' => 'Video sua xe oto con',
-                'desc' => 'Video sua xe oto chi tiet',
+                'description' => 'Video sua xe oto chi tiet',
                 'thumbnail_url' => self::THUMBNAIL_URL,
                 'sort_order' => 1,
                 'video_url' => self::VIDEO_URL,
@@ -39,7 +39,7 @@ class VideosSeed extends AbstractSeed
             [
                 'manual_id' => 1,
                 'title' => 'Video sua xe oto tai',
-                'desc' => 'Video sua xe oto chi tiet',
+                'description' => 'Video sua xe oto chi tiet',
                 'thumbnail_url' => self::THUMBNAIL_URL,
                 'sort_order' => 2,
                 'video_url' => self::VIDEO_URL,
@@ -48,7 +48,7 @@ class VideosSeed extends AbstractSeed
             [
                 'manual_id' => 2,
                 'title' => 'Video sua xe may SH',
-                'desc' => 'Video sua xe may chi tiet',
+                'description' => 'Video sua xe may chi tiet',
                 'thumbnail_url' => self::THUMBNAIL_URL,
                 'sort_order' => 1,
                 'video_url' => self::VIDEO_URL,

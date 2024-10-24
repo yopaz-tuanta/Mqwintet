@@ -20,7 +20,7 @@
                 <?php
                     echo $this->Form->control('manual_id', ['options' => $manuals]);
                     echo $this->Form->control('title');
-                    echo $this->Form->control('desc');
+                    echo $this->Form->control('description');
                     echo $this->Form->control('thumbnail_url');
                     echo $this->Form->control('video_url');
                     echo $this->Form->control('sort_order');

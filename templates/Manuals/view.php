@@ -36,9 +36,9 @@
                 </tr>
             </table>
             <div class="text">
-                <strong><?= __('Desc') ?></strong>
+                <strong><?= __('Description') ?></strong>
                 <blockquote>
-                    <?= $this->Text->autoParagraph(h($manual->desc)); ?>
+                    <?= $this->Text->autoParagraph(h($manual->description)); ?>
                 </blockquote>
             </div>
             <div class="related">
@@ -50,7 +50,7 @@
                             <th><?= __('Id') ?></th>
                             <th><?= __('Manual Id') ?></th>
                             <th><?= __('Title') ?></th>
-                            <th><?= __('Desc') ?></th>
+                            <th><?= __('Description') ?></th>
                             <th><?= __('Thumbnail Url') ?></th>
                             <th><?= __('Video Url') ?></th>
                             <th><?= __('Sort Order') ?></th>
@@ -65,7 +65,7 @@
                             <td><?= h($video->id) ?></td>
                             <td><?= h($video->manual_id) ?></td>
                             <td><?= h($video->title) ?></td>
-                            <td><?= h($video->desc) ?></td>
+                            <td><?= h($video->description) ?></td>
                             <td><?= h($video->thumbnail_url) ?></td>
                             <td><?= h($video->video_url) ?></td>
                             <td><?= h($video->sort_order) ?></td>

@@ -21,7 +21,7 @@ class CreateManuals extends AbstractMigration
                 'limit' => 255,
                 'null' => false,
             ])
-            ->addColumn('desc', 'text', [
+            ->addColumn('description', 'text', [
                 'default' => null,
                 'null' => true,
             ])

@@ -72,8 +72,8 @@ class VideosTable extends Table
             ->notEmptyString('title');
 
         $validator
-            ->scalar('desc')
-            ->allowEmptyString('desc');
+            ->scalar('description')
+            ->allowEmptyString('description');
 
         $validator
             ->scalar('thumbnail_url')
