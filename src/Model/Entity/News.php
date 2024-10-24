@@ -31,6 +31,5 @@ class News extends Entity
         'title' => true,
         'content' => true,
         'released' => true,
-        'deleted' => true,
     ];
 }

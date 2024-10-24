@@ -100,4 +100,17 @@ class VideosController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function softDelete($id = null)
+    {
+        $this->request->allowMethod(['post', 'delete']);
+        $video = $this->Videos->get($id);
+        if ($this->Videos->softDelete($id)) {
+            $this->Flash->success(__('The video has been deleted.'));
+        } else {
+            $this->Flash->error(__('The video could not be deleted. Please, try again.'));
+        }
+
+        return $this->redirect(['action' => 'index']);
+    }
 }
