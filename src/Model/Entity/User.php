@@ -14,9 +14,9 @@ use Cake\ORM\Entity;
  * @property string $last_name
  * @property string $password
  * @property string $role
- * @property \Cake\I18n\DateTime $created_at
- * @property \Cake\I18n\DateTime $updated_at
- * @property \Cake\I18n\DateTime|null $deleted_at
+ * @property \Cake\I18n\DateTime|null $created
+ * @property \Cake\I18n\DateTime|null $modified
+ * @property \Cake\I18n\DateTime|null $deleted
  */
 class User extends Entity
 {
@@ -34,10 +34,8 @@ class User extends Entity
         'first_name' => true,
         'last_name' => true,
         'password' => true,
-        'role' => false,
-        'created_at' => false,
-        'updated_at' => false,
-        'deleted_at' => true,
+        'role' => true,
+        'deleted' => true,
     ];
 
     /**

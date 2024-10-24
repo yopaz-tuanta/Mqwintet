@@ -11,10 +11,10 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $title
  * @property string $content
- * @property \Cake\I18n\DateTime $created_at
- * @property \Cake\I18n\DateTime $updated_at
- * @property \Cake\I18n\DateTime $released_at
- * @property \Cake\I18n\DateTime|null $deleted_at
+ * @property \Cake\I18n\DateTime|null $created
+ * @property \Cake\I18n\DateTime|null $modified
+ * @property \Cake\I18n\DateTime|null $released
+ * @property \Cake\I18n\DateTime|null $deleted
  */
 class News extends Entity
 {
@@ -30,9 +30,7 @@ class News extends Entity
     protected array $_accessible = [
         'title' => true,
         'content' => true,
-        'created_at' => false,
-        'updated_at' => false,
-        'released_at' => true,
-        'deleted_at' => true,
+        'released' => true,
+        'deleted' => true,
     ];
 }

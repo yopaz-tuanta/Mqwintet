@@ -26,6 +26,8 @@ use Cake\Validation\Validator;
  * @method iterable<\App\Model\Entity\Video>|\Cake\Datasource\ResultSetInterface<\App\Model\Entity\Video> saveManyOrFail(iterable $entities, array $options = [])
  * @method iterable<\App\Model\Entity\Video>|\Cake\Datasource\ResultSetInterface<\App\Model\Entity\Video>|false deleteMany(iterable $entities, array $options = [])
  * @method iterable<\App\Model\Entity\Video>|\Cake\Datasource\ResultSetInterface<\App\Model\Entity\Video> deleteManyOrFail(iterable $entities, array $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class VideosTable extends Table
 {
@@ -42,6 +44,7 @@ class VideosTable extends Table
         $this->setTable('videos');
         $this->setDisplayField('title');
         $this->setPrimaryKey('id');
+
         $this->addBehavior('Timestamp');
 
         $this->belongsTo('Manuals', [
@@ -56,57 +59,47 @@ class VideosTable extends Table
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
-    // public function validationDefault(Validator $validator): Validator
-    // {
-    //     $validator
-    //         ->integer('manual_id')
-    //         ->notEmptyString('manual_id');
+    public function validationDefault(Validator $validator): Validator
+    {
+        $validator
+            ->integer('manual_id')
+            ->notEmptyString('manual_id');
 
-    //     $validator
-    //         ->scalar('title')
-    //         ->maxLength('title', 255)
-    //         ->requirePresence('title', 'create')
-    //         ->notEmptyString('title');
+        $validator
+            ->scalar('title')
+            ->maxLength('title', 255)
+            ->requirePresence('title', 'create')
+            ->notEmptyString('title');
 
-    //     $validator
-    //         ->scalar('desc')
-    //         ->requirePresence('desc', 'create')
-    //         ->notEmptyString('desc');
+        $validator
+            ->scalar('desc')
+            ->allowEmptyString('desc');
 
-    //     $validator
-    //         ->scalar('thumbnail_url')
-    //         ->maxLength('thumbnail_url', 255)
-    //         ->requirePresence('thumbnail_url', 'create')
-    //         ->notEmptyString('thumbnail_url');
+        $validator
+            ->scalar('thumbnail_url')
+            ->requirePresence('thumbnail_url', 'create')
+            ->notEmptyString('thumbnail_url');
 
-    //     $validator
-    //         ->scalar('video_url')
-    //         ->maxLength('video_url', 255)
-    //         ->requirePresence('video_url', 'create')
-    //         ->notEmptyString('video_url');
+        $validator
+            ->scalar('video_url')
+            ->requirePresence('video_url', 'create')
+            ->notEmptyString('video_url');
 
-    //     $validator
-    //         ->integer('sort_order')
-    //         ->notEmptyString('sort_order');
+        $validator
+            ->integer('sort_order')
+            ->requirePresence('sort_order', 'create')
+            ->notEmptyString('sort_order');
 
-    //     $validator
-    //         ->dateTime('created_at')
-    //         ->notEmptyDateTime('created_at');
+        $validator
+            ->dateTime('released')
+            ->allowEmptyDateTime('released');
 
-    //     $validator
-    //         ->dateTime('updated_at')
-    //         ->notEmptyDateTime('updated_at');
+        $validator
+            ->dateTime('deleted')
+            ->allowEmptyDateTime('deleted');
 
-    //     $validator
-    //         ->dateTime('released_at')
-    //         ->notEmptyDateTime('released_at');
-
-    //     $validator
-    //         ->dateTime('deleted_at')
-    //         ->allowEmptyDateTime('deleted_at');
-
-    //     return $validator;
-    // }
+        return $validator;
+    }
 
     /**
      * Returns a rules checker object that will be used for validating
@@ -115,10 +108,10 @@ class VideosTable extends Table
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
      * @return \Cake\ORM\RulesChecker
      */
-    // public function buildRules(RulesChecker $rules): RulesChecker
-    // {
-    //     $rules->add($rules->existsIn(['manual_id'], 'Manuals'), ['errorField' => 'manual_id']);
+    public function buildRules(RulesChecker $rules): RulesChecker
+    {
+        $rules->add($rules->existsIn(['manual_id'], 'Manuals'), ['errorField' => 'manual_id']);
 
-    //     return $rules;
-    // }
+        return $rules;
+    }
 }

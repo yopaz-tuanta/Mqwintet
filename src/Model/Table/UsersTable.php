@@ -25,6 +25,8 @@ use Cake\Validation\Validator;
  * @method iterable<\App\Model\Entity\User>|\Cake\Datasource\ResultSetInterface<\App\Model\Entity\User> saveManyOrFail(iterable $entities, array $options = [])
  * @method iterable<\App\Model\Entity\User>|\Cake\Datasource\ResultSetInterface<\App\Model\Entity\User>|false deleteMany(iterable $entities, array $options = [])
  * @method iterable<\App\Model\Entity\User>|\Cake\Datasource\ResultSetInterface<\App\Model\Entity\User> deleteManyOrFail(iterable $entities, array $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class UsersTable extends Table
 {
@@ -51,50 +53,42 @@ class UsersTable extends Table
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
-    // public function validationDefault(Validator $validator): Validator
-    // {
-    //     $validator
-    //         ->email('email')
-    //         ->requirePresence('email', 'create')
-    //         ->notEmptyString('email')
-    //         ->add('email', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+    public function validationDefault(Validator $validator): Validator
+    {
+        $validator
+            ->email('email')
+            ->requirePresence('email', 'create')
+            ->notEmptyString('email')
+            ->add('email', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
-    //     $validator
-    //         ->scalar('first_name')
-    //         ->maxLength('first_name', 255)
-    //         ->requirePresence('first_name', 'create')
-    //         ->notEmptyString('first_name');
+        $validator
+            ->scalar('first_name')
+            ->maxLength('first_name', 255)
+            ->requirePresence('first_name', 'create')
+            ->notEmptyString('first_name');
 
-    //     $validator
-    //         ->scalar('last_name')
-    //         ->maxLength('last_name', 255)
-    //         ->requirePresence('last_name', 'create')
-    //         ->notEmptyString('last_name');
+        $validator
+            ->scalar('last_name')
+            ->maxLength('last_name', 255)
+            ->requirePresence('last_name', 'create')
+            ->notEmptyString('last_name');
 
-    //     $validator
-    //         ->scalar('password')
-    //         ->maxLength('password', 255)
-    //         ->requirePresence('password', 'create')
-    //         ->notEmptyString('password');
+        $validator
+            ->scalar('password')
+            ->maxLength('password', 255)
+            ->requirePresence('password', 'create')
+            ->notEmptyString('password');
 
-    //     $validator
-    //         ->scalar('role')
-    //         ->notEmptyString('role');
+        $validator
+            ->scalar('role')
+            ->notEmptyString('role');
 
-    //     $validator
-    //         ->dateTime('created_at')
-    //         ->notEmptyDateTime('created_at');
+        $validator
+            ->dateTime('deleted')
+            ->allowEmptyDateTime('deleted');
 
-    //     $validator
-    //         ->dateTime('updated_at')
-    //         ->notEmptyDateTime('updated_at');
-
-    //     $validator
-    //         ->dateTime('deleted_at')
-    //         ->allowEmptyDateTime('deleted_at');
-
-    //     return $validator;
-    // }
+        return $validator;
+    }
 
     /**
      * Returns a rules checker object that will be used for validating
@@ -103,10 +97,10 @@ class UsersTable extends Table
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
      * @return \Cake\ORM\RulesChecker
      */
-    // public function buildRules(RulesChecker $rules): RulesChecker
-    // {
-    //     $rules->add($rules->isUnique(['email']), ['errorField' => 'email']);
+    public function buildRules(RulesChecker $rules): RulesChecker
+    {
+        $rules->add($rules->isUnique(['email']), ['errorField' => 'email']);
 
-    //     return $rules;
-    // }
+        return $rules;
+    }
 }

@@ -43,8 +43,8 @@
                     <td><?= h($user->created) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Updated') ?></th>
-                    <td><?= h($user->updated) ?></td>
+                    <th><?= __('Modified') ?></th>
+                    <td><?= h($user->modified) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Deleted') ?></th>

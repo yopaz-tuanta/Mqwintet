@@ -11,14 +11,14 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property int $manual_id
  * @property string $title
- * @property string $desc
+ * @property string|null $desc
  * @property string $thumbnail_url
  * @property string $video_url
  * @property int $sort_order
- * @property \Cake\I18n\DateTime $created_at
- * @property \Cake\I18n\DateTime $updated_at
- * @property \Cake\I18n\DateTime $released_at
- * @property \Cake\I18n\DateTime|null $deleted_at
+ * @property \Cake\I18n\DateTime|null $created
+ * @property \Cake\I18n\DateTime|null $modified
+ * @property \Cake\I18n\DateTime|null $released
+ * @property \Cake\I18n\DateTime|null $deleted
  *
  * @property \App\Model\Entity\Manual $manual
  */
@@ -40,9 +40,8 @@ class Video extends Entity
         'thumbnail_url' => true,
         'video_url' => true,
         'sort_order' => true,
-        'created_at' => false,
-        'updated_at' => false,
-        'released_at' => false,
-        'deleted_at' => true,
+        'released' => true,
+        'deleted' => true,
+        'manual' => true,
     ];
 }

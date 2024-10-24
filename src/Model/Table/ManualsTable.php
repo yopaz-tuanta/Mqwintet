@@ -26,6 +26,8 @@ use Cake\Validation\Validator;
  * @method iterable<\App\Model\Entity\Manual>|\Cake\Datasource\ResultSetInterface<\App\Model\Entity\Manual> saveManyOrFail(iterable $entities, array $options = [])
  * @method iterable<\App\Model\Entity\Manual>|\Cake\Datasource\ResultSetInterface<\App\Model\Entity\Manual>|false deleteMany(iterable $entities, array $options = [])
  * @method iterable<\App\Model\Entity\Manual>|\Cake\Datasource\ResultSetInterface<\App\Model\Entity\Manual> deleteManyOrFail(iterable $entities, array $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class ManualsTable extends Table
 {
@@ -42,7 +44,9 @@ class ManualsTable extends Table
         $this->setTable('manuals');
         $this->setDisplayField('title');
         $this->setPrimaryKey('id');
+
         $this->addBehavior('Timestamp');
+
         $this->hasMany('Videos', [
             'foreignKey' => 'manual_id',
         ]);
@@ -64,16 +68,7 @@ class ManualsTable extends Table
 
         $validator
             ->scalar('desc')
-            ->requirePresence('desc', 'create')
-            ->notEmptyString('desc');
-
-        $validator
-            ->dateTime('created_at')
-            ->notEmptyDateTime('created_at');
-
-        $validator
-            ->dateTime('updated_at')
-            ->notEmptyDateTime('updated_at');
+            ->allowEmptyString('desc');
 
         return $validator;
     }

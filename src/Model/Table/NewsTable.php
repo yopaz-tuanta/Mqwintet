@@ -24,6 +24,8 @@ use Cake\Validation\Validator;
  * @method iterable<\App\Model\Entity\News>|\Cake\Datasource\ResultSetInterface<\App\Model\Entity\News> saveManyOrFail(iterable $entities, array $options = [])
  * @method iterable<\App\Model\Entity\News>|\Cake\Datasource\ResultSetInterface<\App\Model\Entity\News>|false deleteMany(iterable $entities, array $options = [])
  * @method iterable<\App\Model\Entity\News>|\Cake\Datasource\ResultSetInterface<\App\Model\Entity\News> deleteManyOrFail(iterable $entities, array $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class NewsTable extends Table
 {
@@ -40,6 +42,7 @@ class NewsTable extends Table
         $this->setTable('news');
         $this->setDisplayField('title');
         $this->setPrimaryKey('id');
+
         $this->addBehavior('Timestamp');
     }
 
@@ -49,35 +52,27 @@ class NewsTable extends Table
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
-    // public function validationDefault(Validator $validator): Validator
-    // {
-    //     $validator
-    //         ->scalar('title')
-    //         ->maxLength('title', 255)
-    //         ->requirePresence('title', 'create')
-    //         ->notEmptyString('title');
+    public function validationDefault(Validator $validator): Validator
+    {
+        $validator
+            ->scalar('title')
+            ->maxLength('title', 255)
+            ->requirePresence('title', 'create')
+            ->notEmptyString('title');
 
-    //     $validator
-    //         ->scalar('content')
-    //         ->requirePresence('content', 'create')
-    //         ->notEmptyString('content');
+        $validator
+            ->scalar('content')
+            ->requirePresence('content', 'create')
+            ->notEmptyString('content');
 
-    //     $validator
-    //         ->dateTime('created_at')
-    //         ->notEmptyDateTime('created_at');
+        $validator
+            ->dateTime('released')
+            ->allowEmptyDateTime('released');
 
-    //     $validator
-    //         ->dateTime('updated_at')
-    //         ->notEmptyDateTime('updated_at');
+        $validator
+            ->dateTime('deleted')
+            ->allowEmptyDateTime('deleted');
 
-    //     $validator
-    //         ->dateTime('released_at')
-    //         ->notEmptyDateTime('released_at');
-
-    //     $validator
-    //         ->dateTime('deleted_at')
-    //         ->allowEmptyDateTime('deleted_at');
-
-    //     return $validator;
-    // }
+        return $validator;
+    }
 }
