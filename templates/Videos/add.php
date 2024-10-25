@@ -14,7 +14,7 @@
     </aside>
     <div class="column column-80">
         <div class="videos form content">
-            <?= $this->Form->create($video) ?>
+            <?= $this->Form->create($video, ['type' => 'file']) ?>
             <fieldset>
                 <legend><?= __('Add Video') ?></legend>
                 <?php
@@ -22,7 +22,7 @@
                     echo $this->Form->control('title');
                     echo $this->Form->control('description');
                     echo $this->Form->control('thumbnail_url');
-                    echo $this->Form->control('video_url');
+                    echo $this->Form->control('file', ['type' => 'file']);
                     echo $this->Form->control('sort_order');
                     echo $this->Form->control('released');
                     echo $this->Form->control('deleted');

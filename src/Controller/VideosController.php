@@ -1,7 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
+
+use Cake\Routing\Router;
 
 /**
  * Videos Controller
@@ -47,15 +50,36 @@ class VideosController extends AppController
         $video = $this->Videos->newEmptyEntity();
         if ($this->request->is('post')) {
             $video = $this->Videos->patchEntity($video, $this->request->getData());
-            if ($this->Videos->save($video)) {
-                $this->Flash->success(__('The video has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
+            // dd($this->request->getData('file'));
+            $video_url = $this->saveFile($this->request->getData('file'));
+            if ($video_url) {
+                $video->video_url = $video_url;
+                if ($this->Videos->save($video)) {
+                    $this->Flash->success(__('The video has been saved.'));
+                    return $this->redirect(['action' => 'index']);
+                }
+            } else {
+                $this->Flash->error(__('The video could not be saved. Please, try again.'));
             }
-            $this->Flash->error(__('The video could not be saved. Please, try again.'));
         }
         $manuals = $this->Videos->Manuals->find('list', limit: 200)->all();
         $this->set(compact('video', 'manuals'));
+    }
+
+    public function saveFile($file)
+    {
+        if (!empty($file) && $file->getError() === 0) {
+            $video_url = $file->getClientFilename();
+            $filePath = WWW_ROOT . 'uploads/videos/'. $video_url;
+            // dd($filePath);
+            $file->moveTo($filePath);
+            // Di chuyển file vào thư mục uploads/videos/
+            if (is_file($filePath)) {
+                return $video_url;
+            }
+        }
+
+        return false;
     }
 
     /**

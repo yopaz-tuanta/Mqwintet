@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Video $video
@@ -65,9 +66,15 @@
             </div>
             <div class="text">
                 <strong><?= __('Video Url') ?></strong>
-                <blockquote>
-                    <?= $this->Text->autoParagraph(h($video->video_url)); ?>
-                </blockquote>
+                <video width="320" height="240" controls>
+                    <?php
+                    // Tạo đường dẫn URL cho video
+                    $videoUrl = $this->Url->build('uploads/videos/' . $video->video_url);
+                    ?>
+
+                    <source src="<?= $videoUrl ?>" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
         </div>
     </div>
