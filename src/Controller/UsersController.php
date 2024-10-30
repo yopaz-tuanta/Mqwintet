@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\Mailer\Mailer;
+use Cake\Mailer\Transport\MailTransport;
+
 /**
  * Users Controller
  *
@@ -108,7 +111,7 @@ class UsersController extends AppController
         parent::beforeFilter($event);
         // Configure the login action to not require authentication, preventing
         // the infinite redirect loop issue
-        $this->Authentication->addUnauthenticatedActions(['login']);
+        $this->Authentication->addUnauthenticatedActions(['login', 'reset']);
     }
 
 
@@ -123,7 +126,6 @@ class UsersController extends AppController
             //     'controller' => 'Manuals',
             //     'action' => 'index',
             // ]);
-
             return $this->redirect('/manual');
         }
         // display error if user submitted and authentication failed
@@ -143,4 +145,83 @@ class UsersController extends AppController
             return $this->redirect(['controller' => 'Users', 'action' => 'login']);
         }
     }
+
+    public function reset()
+    {
+        $this->request->allowMethod(['get', 'post']);
+        $email = $this->request->getData('email');
+        if ($email) {
+            $user = $this->Users->find()->where(['email' => $email])->first();
+
+            //kiem tra co email da duoc dang ky
+            if (!$user) {
+                $this->Flash->error(__('Sai email'));
+            }
+
+            // ham tao token
+            $token = $this->_createResetPasswordToken();
+            $resetPwdData = [
+
+            ];
+            //kiem tra email da co token chua
+            $pwdResetId = $this->fetchTable('password_resets')->find();
+            
+            // ham gui email
+            
+            // $this->sendEmail();
+        }
+    }
+
+    protected function _createResetPasswordToken(){
+        $token = 'abcdsade';
+        return $token;
+    }
+
+    public function sendEmail()
+    {
+        $mailer = new Mailer('default');
+        $mailer->setFrom(['noreply@example.com' => 'Your App'])
+            ->setTo('test@example.com')
+            ->setSubject('Test Email')
+            ->deliver('This is a test email sent from CakePHP using Mailtrap.');
+    }
+
+    // public function beforeFilter(\Cake\Event\EventInterface $event)
+    // {
+    //     parent::beforeFilter($event);
+    //     $this->Authentication->addUnauthenticatedActions(['login']);
+    // }
+
+    // public function login()
+    // {
+    //     $this->request->allowMethod(['get', 'post']);
+    //     $errors = $this->validateLogin();
+    //     if ($errors) {
+    //         $this->set(compact('errors'));
+    //         return ;
+    //     }
+
+    //     $result = $this->Authentication->getResult();
+    //     if ($result && $result->isValid()) {
+    //         return $this->redirect("/");
+    //     }
+
+    //     if ($this->request->is('post') && !$result->isValid() && empty($errors)) {
+    //         $this->Flash->error(
+    //             "メールアドレス、またはパスワードが間違っています。"
+    //         );
+    //     }
+    // }
+
+    // private function validateLogin()
+    // {
+    //     $validator = new Validator();
+    //     $validator
+    //         ->email('email', false, 'メール形式が正しくありません。')
+    //         ->notEmptyString('email', "メールアドレスを入力してください。");
+    //     $validator
+    //         ->notEmptyString('password', "パスワードを入力してください。");
+
+    //     return $errors = $validator->validate($this->request->getData());
+    // }
 }
