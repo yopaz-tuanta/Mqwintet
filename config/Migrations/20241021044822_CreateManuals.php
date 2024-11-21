@@ -33,6 +33,10 @@ class CreateManuals extends AbstractMigration
                 'default' => null,
                 'null' => true,
             ])
+            ->addColumn('deleted', 'timestamp', [
+                'default' => null,
+                'null' => true,
+            ])
             ->create();
     }
 }

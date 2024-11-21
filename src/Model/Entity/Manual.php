@@ -32,4 +32,6 @@ class Manual extends Entity
         'description' => true,
         'videos' => true,
     ];
+
+    
 }

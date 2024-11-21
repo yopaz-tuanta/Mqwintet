@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -17,7 +18,10 @@ class ManualsController extends AppController
      */
     public function index()
     {
-        $query = $this->Manuals->find();
+        $query = $this->Manuals->find('active' , contain: [
+            'Videos'
+        ]);
+       
         $manuals = $this->paginate($query);
 
         $this->set(compact('manuals'));

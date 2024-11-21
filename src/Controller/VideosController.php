@@ -68,6 +68,7 @@ class VideosController extends AppController
 
     public function saveFile($file)
     {
+        // dd($file->getFile());
         if (!empty($file) && $file->getError() === 0) {
             $video_url = $file->getClientFilename();
             $filePath = WWW_ROOT . 'uploads/videos/'. $video_url;
@@ -78,7 +79,7 @@ class VideosController extends AppController
                 return $video_url;
             }
         }
-
+        dd($file);
         return false;
     }
 

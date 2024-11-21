@@ -224,4 +224,79 @@ class UsersController extends AppController
 
     //     return $errors = $validator->validate($this->request->getData());
     // }
+
+
+
+    // public function initialize(): void
+    // {
+    //     parent::initialize();
+    //     $this->viewBuilder()->setLayout('guest_layout');
+    // }
+
+    // public function beforeFilter(\Cake\Event\EventInterface $event)
+    // {
+    //     parent::beforeFilter($event);
+    //     $this->Authentication->addUnauthenticatedActions(['create', 'store']);
+    // }
+
+    // public function create()
+    // {
+    //     if ($this->Authentication->getIdentity()) {
+    //         return $this->redirect('/');
+    //     }
+
+    //     return $this->render('login');
+    // }
+
+    // public function store()
+    // {
+    //     // Validate request
+    //     $errors = $this->validateLogin();
+
+    //     if ($errors) {
+    //         $this->set(compact('errors'));
+
+    //         return $this->render('login');
+    //     }
+
+    //     // Kiem tra neu bi xoa roi thi khong cho dang nhap
+    //     // Check user is soft deleted
+    //     // $user = $result->getData();
+    //     // if ($user->deleted) {
+    //     //     $this->Authentication->logout(); // Force soft deleted user logout
+
+    //     //     return $this->flashError();
+    //     // }
+
+    //     // Check user record
+    //     $result = $this->Authentication->getResult();
+    //     dd($result);
+    //     if (! $result || ! $result->isValid()) {
+    //         return $this->flashError();
+    //     }
+
+    //     // Login success
+    //     return $this->redirect('/'); // Success login
+    // }
+
+    // private function flashError()
+    // {
+    //     $this->Flash->error(
+    //         'メールアドレス、またはパスワードが間違っています。'
+    //     );
+
+    //     return $this->render('login');
+    // }
+
+    // private function validateLogin()
+    // {
+    //     $validator = new Validator;
+    //     $validator
+    //         ->email('email', false, 'メール形式が正しくありません。')
+    //         ->notEmptyString('email', 'メールアドレスを入力してください。');
+    //     $validator
+    //         ->notEmptyString('password', 'パスワードを入力してください。');
+
+    //     return $validator->validate($this->request->getData());
+    // }
 }
